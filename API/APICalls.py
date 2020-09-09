@@ -11,7 +11,7 @@ def makeIssue(data):
             "project": {
                 "key": "DS"
             },
-            "summary": "This is a test " + "User " + str(data.getBadgeID()) + " returned",
+            "summary": "This is a test " + "User " + str(data.getName()) + " returned",
             "description": {
                 "type": "doc",
                 "version": 1,
@@ -20,7 +20,7 @@ def makeIssue(data):
                         "type": "paragraph",
                         "content": [
                             {
-                                "text": "The user " + str(data.getBadgeID()) + str(data.getName()),
+                                "text": "The user " + str(data.getName()) + " with badge " + str(data.getBadgeID()) + "\n" + data.getMessage(),
                                 "type": "text"
                             }
                         ]

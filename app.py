@@ -4,7 +4,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for
 import API.Data
 import API.APICalls
-from API import Sender
+from API import Sender, APICalls
 
 app = Flask(__name__)
 
@@ -23,21 +23,24 @@ def enterItems(name, badge, amount):
         for i in range(amount):
             message += "returned a " + str(request.form['number ' + str(i)]) + " asset number " + str(request.form['items ' + str(i)] + "\n")
 
-        keyboard = request.form('keyboard')
-        mouse = request.form('mouse')
-        headset = request.form('headset')
+        keyboard = request.form.get('keyboard')
+        mouse = request.form.get('mouse')
+        headset = request.form.get('headset')
 
-        if keyboard == True:
-            message += "keyboard"
-        if mouse == True:
-            message += "mouse"
-        if headset == True:
-            message += "headset"
+        if keyboard == "on":
+            message += "keyboard "
+        if mouse == "on":
+            message += "mouse "
+        if headset == "on":
+            message += "headset "
 
         message += " Were also returned"
+        print(message)
 
         data = API.Data.data(str(name), str(badge), message)
-        API.APICalls.makeIssue(data)
+        Sender.send(APICalls.makeIssue(data), "https://vivint.atlassian.net/rest/api/3/issue")
+
+        return redirect(url_for('checkin'))
 
 
     return render_template('EnterItems.html', name=name, badge=badge, amount=int(amount))
