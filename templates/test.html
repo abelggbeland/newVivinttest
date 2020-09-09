@@ -1,0 +1,25 @@
+{% extends 'bace.html' %}
+
+{% block title %}Raw Form Example{% endblock %}
+
+{% block content %}
+    <form class="form-signin pt-xl-5 text-center" method="POST">
+        <p>
+            <label for="email" class="sr-only">Email</label>
+            <input id="email" type="email" placeholder="Email" name="email">
+        </p>
+
+        <p>
+            <label for="API" class="sr-only">API</label>
+            <input id="API" type="password" placeholder="API Key" name="API">
+        </p>
+        <p>
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </p>
+        <p>
+            <input type="submit" value="Sign In" class="btn-dark btn">
+        </p>
+    </form>
+{% endblock %}

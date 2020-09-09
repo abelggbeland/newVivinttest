@@ -1,0 +1,41 @@
+{% extends 'bace.html' %}
+
+{% block title %}Raw Form Example{% endblock %}
+
+{% block content %}
+    <form class="form-signin pt-xl-5 text-center" method="POST">
+        <input type="hidden" value="{{ name }}" name="name">
+        <input type="hidden" value="{{ badge }}" name="badge">
+        <p>
+            <label for="item">Fill info about computers</label>
+            {% for i in range(amount) %}
+                <p>
+                    <select id="items" name="items {{ i }}">
+                        <option value="Desktop" selected>Desktop</option>
+                        <option value="Laptop">Laptop</option>
+                        <option value="Monitor">Monitor</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <input type="number" name="number {{ i }}">
+                </p>
+            {% endfor %}
+
+        <p>
+            <label for="Keyboard">Keyboard</label>
+            <input type="checkbox" id="Keyboard" name="keyboard">
+        </p>
+
+        <p>
+            <label for="Mouse">Mouse</label>
+            <input type="checkbox" id="Mouse" name="mouse">
+        </p>
+
+        <p>
+            <label for="Headset">Headset</label>
+            <input type="checkbox" id="Headset" name="headset">
+        </p>
+
+        <input type="submit" value="end">
+    </form>
+{% endblock %}

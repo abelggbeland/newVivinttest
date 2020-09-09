@@ -1,0 +1,26 @@
+{% extends 'bace.html' %}
+
+{% block title %}Raw Form Example{% endblock %}
+
+{% block content %}
+    <form class="form-signin pt-xl-5 text-center" method="POST">
+        <p>
+            <label for="Name" class="form-text">Name</label>
+            <input id="Name" type="text" placeholder="Enter Name" name="name">
+        </p>
+
+        <p>
+            <label for="badge" class="form-text">Badge ID</label>
+            <input type="text" placeholder="Enter Badge ID" name="badge" id="badge">
+        </p>
+
+        <p>
+            <label for="Amount" class="form-text">Amount of items</label>
+            <input type="number" name="amount" id="amount">
+        </p>
+
+        <p>
+            <input type="submit" value="Start">
+        </p>
+    </form>
+{% endblock %}
